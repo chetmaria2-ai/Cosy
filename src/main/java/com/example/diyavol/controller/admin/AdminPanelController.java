@@ -29,14 +29,12 @@ import java.util.Optional;
 
 public class AdminPanelController {
 
-    // --- Пользователи ---
     @FXML private TableView<UserService.User> usersTable;
     @FXML private TableColumn<UserService.User, String> userIdColumn;
     @FXML private TableColumn<UserService.User, String> userNameColumn;
     @FXML private TableColumn<UserService.User, String> userEmailColumn;
     @FXML private TableColumn<UserService.User, Boolean> userAdminColumn;
 
-    // --- Отзывы ---
     @FXML private TableView<ReviewService.Review> reviewsTable;
     @FXML private TableColumn<ReviewService.Review, String> reviewIdColumn;
     @FXML private TableColumn<ReviewService.Review, String> reviewUserColumn;
@@ -120,7 +118,6 @@ public class AdminPanelController {
         } else showAlert("Ошибка", "Не удалось снять права");
     }
 
-    // ==================== ОТЗЫВЫ ====================
 
     private void initializeReviewsTable() {
         reviewIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -158,7 +155,6 @@ public class AdminPanelController {
         } else showAlert("Ошибка", "Не удалось изменить статус");
     }
 
-    // ==================== ТОВАРЫ ====================
 
     private void initializeProductsTable() {
         productIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -184,7 +180,6 @@ public class AdminPanelController {
                     setText("—");
                 } else {
                     try {
-                        // Сначала пробуем из ресурсов /images/...
                         var stream = getClass().getResourceAsStream("/com/example/diyavol/images/" +
                                 url.replaceAll(".*/", ""));
                         if (stream != null) {

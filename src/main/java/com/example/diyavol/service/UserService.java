@@ -79,7 +79,6 @@ public class UserService {
             }
             return null;
         } catch (SQLException e) {
-            // БД недоступна — тестовый режим (работает для всех)
             System.out.println("⚠️  БД недоступна, тестовый режим. Ошибка: " + e.getMessage());
             if (username.equals("admin")) {
                 return new User(1, "admin", "Администратор", "admin@test.ru", "admin", 0);
@@ -90,7 +89,6 @@ public class UserService {
         }
     }
 
-    // РЕГИСТРАЦИЯ — открытый пароль, записываем в БД
     public static boolean registerUser(String name, String username, String password, String email) {
         try (Connection conn = com.example.diyavol.db.DatabaseConnection.getConnection()) {
             // Проверяем, не занят ли логин
@@ -108,7 +106,7 @@ public class UserService {
                          "VALUES (?, ?, ?, ?, 'customer', 0)";
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, username);
-                pstmt.setString(2, password);  // открытый пароль
+                pstmt.setString(2, password);
                 pstmt.setString(3, name);
                 pstmt.setString(4, email);
                 int rows = pstmt.executeUpdate();
@@ -118,13 +116,11 @@ public class UserService {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("⚠️  БД недоступна, тестовый режим: " + username);
             return true;
         }
         return false;
     }
 
-    // ПОЛУЧИТЬ ВСЕХ ПОЛЬЗОВАТЕЛЕЙ
     public static List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
         String sql = "SELECT id, username, full_name, email, role, loyalty_points FROM users ORDER BY id";
@@ -151,7 +147,6 @@ public class UserService {
         return users;
     }
 
-    // !!! НОВЫЙ МЕТОД makeAdmin !!!
     public static boolean makeAdmin(int userId, boolean isAdmin) {
         String sql = "UPDATE users SET role = ? WHERE id = ?";
 
@@ -188,7 +183,6 @@ public class UserService {
     }
 
 
-    // ПРОВЕРИТЬ ЕСТЬ ЛИ АДМИН
     public static boolean hasAdmin() {
         String sql = "SELECT COUNT(*) FROM users WHERE role = 'admin'";
 
@@ -200,7 +194,6 @@ public class UserService {
                 return rs.getInt(1) > 0;
             }
         } catch (SQLException e) {
-            System.out.println("❌ Ошибка проверки админа: " + e.getMessage());
         }
         return false;
     }
