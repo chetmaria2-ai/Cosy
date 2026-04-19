@@ -43,7 +43,6 @@ public class AdminPanelController {
     @FXML private TableColumn<ReviewService.Review, String> reviewCommentColumn;
     @FXML private TableColumn<ReviewService.Review, Boolean> reviewApprovedColumn;
 
-    // --- Товары ---
     @FXML private TableView<ProductService.Product> productsTable;
     @FXML private TableColumn<ProductService.Product, Integer> productIdColumn;
     @FXML private TableColumn<ProductService.Product, String> productNameColumn;
@@ -80,7 +79,6 @@ public class AdminPanelController {
         loadProducts();
     }
 
-    // ==================== ПОЛЬЗОВАТЕЛИ ====================
 
     private void initializeUsersTable() {
         userIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
