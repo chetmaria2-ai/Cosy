@@ -135,6 +135,7 @@ public class SupportController {
         alert.setHeaderText(null);
         alert.setContentText(message);
 
+
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.setStyle("-fx-background-color: #F5F5DC; -fx-border-color: #8B0000; -fx-border-width: 2; -fx-border-radius: 10;");
 
