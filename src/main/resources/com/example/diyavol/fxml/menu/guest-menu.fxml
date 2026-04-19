@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.diyavol.controller.shop.GuestController"
+            style="-fx-background-color: linear-gradient(to bottom right, #4A4A4A 0%, #6B6B6B 50%, #C8B89A 100%);">
+
+    <!-- Верхняя панель навигации -->
+    <top>
+        <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-background-color: rgba(50, 50, 50, 0.95); -fx-padding: 15 25;">
+            <Label text="🏠" style="-fx-font-size: 28px;"/>
+            <Label text="CosyHome"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #F5F5DC;"/>
+            <Label text="👤 Гостевой режим"
+                   style="-fx-font-size: 14px; -fx-text-fill: #C8B89A; -fx-font-style: italic; -fx-padding: 0 0 0 20;"/>
+
+            <HBox spacing="10" HBox.hgrow="ALWAYS" alignment="CENTER_RIGHT">
+                <Button text="🛍️ Каталог" onAction="#openCatalog"
+                        style="-fx-background-color: #F5F5DC; -fx-text-fill: #4A4A4A; -fx-font-weight: bold; -fx-background-radius: 15; -fx-padding: 8 15; -fx-border-color: #C8B89A; -fx-border-width: 2; -fx-border-radius: 15; -fx-cursor: hand;"/>
+                <Button text="💬 Поддержка" onAction="#openSupport"
+                        style="-fx-background-color: #F5F5DC; -fx-text-fill: #4A4A4A; -fx-font-weight: bold; -fx-background-radius: 15; -fx-padding: 8 15; -fx-border-color: #C8B89A; -fx-border-width: 2; -fx-border-radius: 15; -fx-cursor: hand;"/>
+                <Button text="🔐 Войти" onAction="#goToLogin"
+                        style="-fx-background-color: #8B0000; -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-background-radius: 15; -fx-padding: 8 15; -fx-border-radius: 15; -fx-cursor: hand;"/>
+                <Button text="📝 Регистрация" onAction="#goToRegister"
+                        style="-fx-background-color: #5D1A1A; -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-background-radius: 15; -fx-padding: 8 15; -fx-border-radius: 15; -fx-cursor: hand;"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- Центральный контент -->
+    <center>
+        <VBox spacing="25" alignment="CENTER" style="-fx-padding: 40;">
+
+            <Label text="Добро пожаловать, гость!"
+                   style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #F5F5DC; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 12, 0.6, 0, 3);"/>
+
+            <!-- Баннер с ограничениями гостя -->
+            <HBox spacing="15" alignment="CENTER"
+                  style="-fx-background-color: rgba(139,0,0,0.3); -fx-background-radius: 15; -fx-padding: 18; -fx-border-color: rgba(220,100,100,0.6); -fx-border-width: 2; -fx-border-radius: 15;">
+                <Label text="⚠️" style="-fx-font-size: 22px;"/>
+                <VBox spacing="3">
+                    <Label text="Вы вошли как гость. Возможности ограничены:"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #F5F5DC;"/>
+                    <Label text="❌  Добавление товаров в корзину недоступно"
+                           style="-fx-font-size: 13px; -fx-text-fill: #FFB3B3;"/>
+                    <Label text="❌  Оформление заказов недоступно"
+                           style="-fx-font-size: 13px; -fx-text-fill: #FFB3B3;"/>
+                    <Label text="❌  Профиль и история заказов недоступны"
+                           style="-fx-font-size: 13px; -fx-text-fill: #FFB3B3;"/>
+                    <Label text="✅  Просмотр каталога доступен"
+                           style="-fx-font-size: 13px; -fx-text-fill: #B3FFB3;"/>
+                </VBox>
+            </HBox>
+
+            <!-- Карточки доступных разделов -->
+            <HBox spacing="25" alignment="CENTER">
+
+                <!-- Каталог — ДОСТУПЕН -->
+                <VBox alignment="CENTER" spacing="12"
+                      style="-fx-background-color: rgba(245,245,220,0.95); -fx-background-radius: 20; -fx-padding: 30 25; -fx-border-color: #4A4A4A; -fx-border-width: 2; -fx-border-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 5);"
+                      prefWidth="180" prefHeight="160">
+                    <Label text="🛍️" style="-fx-font-size: 42px;"/>
+                    <Label text="Каталог" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #4A4A4A;"/>
+                    <Label text="Просмотр доступен" style="-fx-font-size: 12px; -fx-text-fill: #2E7D32; -fx-font-weight: bold;"/>
+                    <Button text="Перейти" onAction="#openCatalog"
+                            style="-fx-background-color: #4A4A4A; -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-background-radius: 12; -fx-padding: 5 15; -fx-cursor: hand;"/>
+                </VBox>
+
+                <!-- Корзина — ЗАБЛОКИРОВАНА -->
+                <VBox alignment="CENTER" spacing="12"
+                      style="-fx-background-color: rgba(200,200,200,0.6); -fx-background-radius: 20; -fx-padding: 30 25; -fx-border-color: #999999; -fx-border-width: 2; -fx-border-dashes: 8; -fx-border-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);"
+                      prefWidth="180" prefHeight="160">
+                    <Label text="🔒" style="-fx-font-size: 42px;"/>
+                    <Label text="Корзина" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #888888;"/>
+                    <Label text="Требуется вход" style="-fx-font-size: 12px; -fx-text-fill: #C0392B; -fx-font-weight: bold;"/>
+                    <Button text="Войти" onAction="#goToLogin"
+                            style="-fx-background-color: #8B0000; -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-background-radius: 12; -fx-padding: 5 15; -fx-cursor: hand;"/>
+                </VBox>
+
+                <!-- Профиль — ЗАБЛОКИРОВАН -->
+                <VBox alignment="CENTER" spacing="12"
+                      style="-fx-background-color: rgba(200,200,200,0.6); -fx-background-radius: 20; -fx-padding: 30 25; -fx-border-color: #999999; -fx-border-width: 2; -fx-border-dashes: 8; -fx-border-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);"
+                      prefWidth="180" prefHeight="160">
+                    <Label text="🔒" style="-fx-font-size: 42px;"/>
+                    <Label text="Профиль" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #888888;"/>
+                    <Label text="Требуется вход" style="-fx-font-size: 12px; -fx-text-fill: #C0392B; -fx-font-weight: bold;"/>
+                    <Button text="Войти" onAction="#goToLogin"
+                            style="-fx-background-color: #8B0000; -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-background-radius: 12; -fx-padding: 5 15; -fx-cursor: hand;"/>
+                </VBox>
+
+                <!-- Поддержка — ДОСТУПНА -->
+                <VBox alignment="CENTER" spacing="12"
+                      style="-fx-background-color: rgba(245,245,220,0.95); -fx-background-radius: 20; -fx-padding: 30 25; -fx-border-color: #4A4A4A; -fx-border-width: 2; -fx-border-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 5);"
+                      prefWidth="180" prefHeight="160">
+                    <Label text="💬" style="-fx-font-size: 42px;"/>
+                    <Label text="Поддержка" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #4A4A4A;"/>
+                    <Label text="Доступно гостям" style="-fx-font-size: 12px; -fx-text-fill: #2E7D32; -fx-font-weight: bold;"/>
+                    <Button text="Перейти" onAction="#openSupport"
+                            style="-fx-background-color: #4A4A4A; -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-background-radius: 12; -fx-padding: 5 15; -fx-cursor: hand;"/>
+                </VBox>
+
+            </HBox>
+
+            <!-- CTA — Призыв зарегистрироваться -->
+            <VBox alignment="CENTER" spacing="12"
+                  style="-fx-background-color: rgba(245,245,220,0.15); -fx-background-radius: 18; -fx-padding: 25 40; -fx-border-color: rgba(245,245,220,0.5); -fx-border-width: 2; -fx-border-radius: 18;">
+                <Label text="🎁 Зарегистрируйтесь и получите скидку 15% на первый заказ!"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #F5F5DC;"/>
+                <HBox spacing="15" alignment="CENTER">
+                    <Button text="📝 Зарегистрироваться бесплатно" onAction="#goToRegister"
+                            style="-fx-background-color: #8B0000; -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 12 25; -fx-font-size: 14px; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 2);"/>
+                    <Button text="🔐 Уже есть аккаунт — войти" onAction="#goToLogin"
+                            style="-fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 12 25; -fx-font-size: 14px; -fx-cursor: hand; -fx-border-color: #F5F5DC; -fx-border-width: 2; -fx-border-radius: 20;"/>
+                </HBox>
+            </VBox>
+
+        </VBox>
+    </center>
+
+    <!-- Нижняя панель -->
+    <bottom>
+        <HBox spacing="25" alignment="CENTER" style="-fx-background-color: rgba(50, 50, 50, 0.9); -fx-padding: 15 25;">
+            <Label text="© 2024 CosyHome. Все права защищены."
+                   style="-fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-font-size: 13px;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

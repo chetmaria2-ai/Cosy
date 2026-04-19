@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.diyavol.controller.auth.register"
+            style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #8B0000 0%, #2F4F4F 100%);">
+
+    <center>
+        <VBox spacing="20" alignment="CENTER" style="-fx-padding: 40;">
+            <Label text="🏠 CosyHome"
+                   style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #F5F5DC;"/>
+            <Label text="Создать аккаунт"
+                   style="-fx-font-size: 18px; -fx-text-fill: #D2B48C;"/>
+
+            <VBox spacing="15" style="-fx-background-color: rgba(245,245,220,0.95); -fx-background-radius: 20; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 5);" maxWidth="380">
+                <TextField fx:id="nameField" promptText="Полное имя"
+                           style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 10; -fx-font-size: 14px;"/>
+                <TextField fx:id="usernameField" promptText="Логин"
+                           style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 10; -fx-font-size: 14px;"/>
+                <PasswordField fx:id="passwordField" promptText="Пароль (минимум 3 символа)"
+                               style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 10; -fx-font-size: 14px;"/>
+                <PasswordField fx:id="confirmPasswordField" promptText="Подтвердите пароль"
+                               style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-padding: 10; -fx-font-size: 14px;"/>
+
+                <Button fx:id="registerButton" text="✅ Зарегистрироваться" onAction="#handleRegister"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: #8B0000; -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 15; -fx-padding: 12 20; -fx-cursor: hand;"/>
+
+                <Separator/>
+
+                <Button fx:id="loginButton" text="Уже есть аккаунт? Войти" onAction="#handleGoToLogin"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: transparent; -fx-text-fill: #8B0000; -fx-font-size: 13px; -fx-cursor: hand; -fx-underline: true;"/>
+
+                <Button fx:id="guestButton" text="👤 Войти как гость" onAction="#handleGuestMode"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: #2F4F4F; -fx-text-fill: #F5F5DC; -fx-font-size: 13px; -fx-background-radius: 10; -fx-padding: 8 15; -fx-cursor: hand;"/>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

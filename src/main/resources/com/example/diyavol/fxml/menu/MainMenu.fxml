@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.diyavol.controller.shop.MainMenu"
+            style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #8B0000 0%, #2F4F4F 100%);">
+
+    <top>
+        <VBox spacing="8" style="-fx-background-color: #2F4F4F; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 3);">
+            <Label fx:id="title" text="🏠 CosyHome"
+                   style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #F5F5DC;"/>
+            <Label fx:id="userGreeting" text="Добро пожаловать!"
+                   style="-fx-font-size: 16px; -fx-text-fill: #D2B48C;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20" alignment="CENTER" style="-fx-padding: 60;">
+            <Label text="Что вы хотите сделать?"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #F5F5DC;"/>
+
+            <Button fx:id="catalogBtn" text="🛍️  Каталог товаров" onAction="#openCatalog"
+                    prefWidth="300" prefHeight="55"
+                    style="-fx-background-color: rgba(245,245,220,0.95); -fx-text-fill: #8B0000; -fx-font-weight: bold; -fx-font-size: 16px; -fx-background-radius: 15; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 2);"/>
+
+            <Button fx:id="cartBtn" text="🛒  Корзина" onAction="#openCart"
+                    prefWidth="300" prefHeight="55"
+                    style="-fx-background-color: rgba(245,245,220,0.95); -fx-text-fill: #8B0000; -fx-font-weight: bold; -fx-font-size: 16px; -fx-background-radius: 15; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 2);"/>
+
+            <Button fx:id="profileBtn" text="👤  Личный кабинет" onAction="#openProfile"
+                    prefWidth="300" prefHeight="55"
+                    style="-fx-background-color: rgba(245,245,220,0.95); -fx-text-fill: #8B0000; -fx-font-weight: bold; -fx-font-size: 16px; -fx-background-radius: 15; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 2);"/>
+
+            <Button fx:id="supportBtn" text="💬  Поддержка" onAction="#openSupport"
+                    prefWidth="300" prefHeight="55"
+                    style="-fx-background-color: rgba(245,245,220,0.95); -fx-text-fill: #8B0000; -fx-font-weight: bold; -fx-font-size: 16px; -fx-background-radius: 15; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 2);"/>
+
+            <Separator style="-fx-padding: 10 0;"/>
+
+            <Button fx:id="logoutBtn" text="🚪  Выйти" onAction="#handleLogout"
+                    prefWidth="300" prefHeight="45"
+                    style="-fx-background-color: #DC143C; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 15; -fx-cursor: hand;"/>
+        </VBox>
+    </center>
+</BorderPane>

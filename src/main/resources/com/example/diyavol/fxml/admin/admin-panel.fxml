@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.diyavol.controller.admin.AdminPanelController"
+            style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #8B0000 0%, #2F4F4F 100%);">
+
+    <top>
+        <VBox spacing="10" style="-fx-background-color: #2F4F4F; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 3);">
+            <Label text="⚙️ Панель администратора" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #F5F5DC;" />
+            <Label text="Управление пользователями, товарами и отзывами" style="-fx-font-size: 14px; -fx-text-fill: #D2B48C;" />
+        </VBox>
+    </top>
+
+    <center>
+        <TabPane fx:id="adminTabs" tabClosingPolicy="UNAVAILABLE" style="-fx-background-color: transparent; -fx-padding: 15;">
+
+            <!-- ПОЛЬЗОВАТЕЛИ -->
+            <Tab text="👥 Пользователи">
+                <VBox spacing="12" style="-fx-padding: 15; -fx-background-color: rgba(245,245,220,0.95); -fx-background-radius: 15;">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Button fx:id="makeAdminButton" text="👑 Назначить админом" onAction="#handleMakeAdmin"
+                                style="-fx-background-color: #2E8B57; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 15;"/>
+                        <Button fx:id="removeAdminButton" text="👤 Снять права" onAction="#handleRemoveAdmin"
+                                style="-fx-background-color: #DC143C; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 15;"/>
+                        <Button text="🔄 Обновить" onAction="#handleRefresh"
+                                style="-fx-background-color: #4682B4; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 15;"/>
+                    </HBox>
+                    <TableView fx:id="usersTable" prefHeight="450">
+                        <columns>
+                            <TableColumn fx:id="userIdColumn" text="ID" prefWidth="60"/>
+                            <TableColumn fx:id="userNameColumn" text="Логин" prefWidth="180"/>
+                            <TableColumn fx:id="userEmailColumn" text="Email" prefWidth="220"/>
+                            <TableColumn fx:id="userAdminColumn" text="Админ" prefWidth="80"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- ОТЗЫВЫ -->
+            <Tab text="💬 Отзывы">
+                <VBox spacing="12" style="-fx-padding: 15; -fx-background-color: rgba(245,245,220,0.95); -fx-background-radius: 15;">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Button fx:id="deleteReviewButton" text="🗑️ Удалить" onAction="#handleDeleteReview"
+                                style="-fx-background-color: #DC143C; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 15;"/>
+                        <Button fx:id="toggleReviewButton" text="👁️ Одобрить/Заблокировать" onAction="#handleToggleReview"
+                                style="-fx-background-color: #FF8C00; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 15;"/>
+                        <Button text="🔄 Обновить" onAction="#handleRefresh"
+                                style="-fx-background-color: #4682B4; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 15;"/>
+                    </HBox>
+                    <TableView fx:id="reviewsTable" prefHeight="450">
+                        <columns>
+                            <TableColumn fx:id="reviewIdColumn" text="ID" prefWidth="50"/>
+                            <TableColumn fx:id="reviewUserColumn" text="Пользователь" prefWidth="130"/>
+                            <TableColumn fx:id="reviewProductColumn" text="Товар" prefWidth="150"/>
+                            <TableColumn fx:id="reviewRatingColumn" text="⭐" prefWidth="60"/>
+                            <TableColumn fx:id="reviewCommentColumn" text="Комментарий" prefWidth="280"/>
+                            <TableColumn fx:id="reviewApprovedColumn" text="Одобрен" prefWidth="80"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <!-- ТОВАРЫ -->
+            <Tab text="🛍️ Товары">
+                <VBox spacing="12" style="-fx-padding: 15; -fx-background-color: rgba(245,245,220,0.95); -fx-background-radius: 15;">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Button fx:id="addProductButton" text="➕ Добавить товар" onAction="#handleAddProduct"
+                                style="-fx-background-color: #2E8B57; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 15;"/>
+                        <Button fx:id="editProductButton" text="✏️ Редактировать" onAction="#handleEditProduct"
+                                style="-fx-background-color: #4682B4; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 15;"/>
+                        <Button fx:id="deleteProductButton" text="🗑️ Удалить товар" onAction="#handleDeleteProduct"
+                                style="-fx-background-color: #DC143C; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 15;"/>
+                        <Button text="🔄 Обновить" onAction="#handleRefresh"
+                                style="-fx-background-color: #4682B4; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 15;"/>
+                    </HBox>
+                    <Label text="💡 Двойной клик по строке — редактировать. Картинки кладите в src/main/resources/com/example/diyavol/images/"
+                           style="-fx-font-size: 12px; -fx-text-fill: #555555;"/>
+                    <TableView fx:id="productsTable" prefHeight="420">
+                        <columns>
+                            <TableColumn fx:id="productIdColumn" text="ID" prefWidth="50"/>
+                            <TableColumn fx:id="productNameColumn" text="Название" prefWidth="220"/>
+                            <TableColumn fx:id="productCategoryColumn" text="Категория" prefWidth="150"/>
+                            <TableColumn fx:id="productPriceColumn" text="Цена ₽" prefWidth="90"/>
+                            <TableColumn fx:id="productStockColumn" text="Склад" prefWidth="70"/>
+                            <TableColumn fx:id="productImageColumn" text="Картинка" prefWidth="120"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+        </TabPane>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-padding: 15; -fx-background-color: #2F4F4F;">
+            <Button fx:id="backButton" text="← Назад в меню" onAction="#handleBackToMain"
+                    style="-fx-background-color: #A52A2A; -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 12 25; -fx-font-size: 14px;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

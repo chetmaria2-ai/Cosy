@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.diyavol.controller.shop.CartController"
+            style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #8B0000 0%, #D2B48C 100%);">
+
+    <top>
+        <VBox spacing="10" style="-fx-background-color: #8B0000; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 3);">
+            <Label text="🛒 Корзина покупок" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #F5F5DC;" />
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="15" style="-fx-padding: 20;">
+            <TableView fx:id="cartTable" style="-fx-pref-height: 400px; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);">
+                <columns>
+                    <TableColumn fx:id="productColumn" text="Товар" prefWidth="300" />
+                    <TableColumn fx:id="priceColumn" text="Цена" prefWidth="150" />
+                    <TableColumn fx:id="quantityColumn" text="Количество" prefWidth="120" />
+                </columns>
+            </TableView>
+
+            <Label fx:id="totalLabel" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #F5F5DC;" />
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="15" alignment="CENTER" style="-fx-padding: 20; -fx-background-color: #8B0000;">
+            <Button fx:id="removeButton" text="🗑️ Удалить товар" onAction="#handleRemoveItem"
+                    style="-fx-background-color: #6B0000; -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 20;" />
+            <Button fx:id="continueShoppingButton" text="🛍️ Продолжить покупки" onAction="#handleContinueShopping"
+                    style="-fx-background-color: #D2B48C; -fx-text-fill: #8B0000; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 20;" />
+            <Button fx:id="checkoutButton" text="💳 Оформить заказ" onAction="#handleCheckout"
+                    style="-fx-background-color: #A52A2A; -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 20;" />
+        </HBox>
+    </bottom>
+</BorderPane>

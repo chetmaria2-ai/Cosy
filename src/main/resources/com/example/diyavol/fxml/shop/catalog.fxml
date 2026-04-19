@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.diyavol.controller.shop.CatalogController"
+            style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #8B0000 0%, #D2B48C 100%);">
+
+    <top>
+        <VBox spacing="15" style="-fx-background-color: #8B0000; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 3);">
+
+            <!-- Заголовок + кнопка назад -->
+            <HBox spacing="20" alignment="CENTER_LEFT">
+                <Button text="← Назад" onAction="#handleBackToMain"
+                        style="-fx-background-color: #A52A2A; -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 8 18; -fx-font-size: 14px;" />
+                <Label text="🛍️ Каталог товаров" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #F5F5DC;" />
+            </HBox>
+
+            <!-- Поиск и фильтры -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <TextField fx:id="searchField" promptText="Поиск товаров..."
+                           style="-fx-pref-width: 300px; -fx-background-radius: 20; -fx-padding: 10 15; -fx-font-size: 14px;" />
+                <Button text="🔍 Найти" onAction="#handleSearch"
+                        style="-fx-background-color: #D2B48C; -fx-text-fill: #8B0000; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 10 20; -fx-font-size: 14px;" />
+            </HBox>
+
+            <!-- Фильтры -->
+            <HBox spacing="20" alignment="CENTER_LEFT">
+                <VBox spacing="5">
+                    <Label text="Категория:" style="-fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-font-size: 14px;" />
+                    <ComboBox fx:id="categoryComboBox" onAction="#handleCategoryFilter"
+                              style="-fx-pref-width: 200px; -fx-background-radius: 15; -fx-padding: 8; -fx-font-size: 14px;" />
+                </VBox>
+
+                <VBox spacing="5">
+                    <Label text="Цена:" style="-fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-font-size: 14px;" />
+                    <ComboBox fx:id="priceComboBox" onAction="#handlePriceFilter"
+                              style="-fx-pref-width: 150px; -fx-background-radius: 15; -fx-padding: 8; -fx-font-size: 14px;" />
+                </VBox>
+
+                <Button text="🧹 Очистить" onAction="#handleClearFilters"
+                        style="-fx-background-color: #A52A2A; -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-background-radius: 15; -fx-padding: 10 15; -fx-font-size: 14px;" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <HBox spacing="20" style="-fx-padding: 20;">
+            <!-- Левая часть - каталог товаров -->
+            <ScrollPane fx:id="productsScrollPane"
+                        style="-fx-pref-width: 700px; -fx-pref-height: 500px; -fx-background: transparent; -fx-border-color: transparent;"
+                        fitToWidth="true">
+            </ScrollPane>
+
+            <!-- Правая часть - детали товара -->
+            <VBox spacing="20" style="-fx-pref-width: 400px; -fx-background-color: rgba(245,245,220,0.95); -fx-background-radius: 20; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 5);">
+                <Label text="ℹ️ Информация о товаре" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #8B0000;" />
+
+                <!-- Изображение товара -->
+                <ImageView fx:id="productImageView"
+                           fitWidth="200"
+                           fitHeight="200"
+                           style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);" />
+
+                <TextArea fx:id="productDescription" editable="false" wrapText="true"
+                          style="-fx-pref-height: 180px; -fx-background-color: white; -fx-border-radius: 15; -fx-background-radius: 15; -fx-padding: 15; -fx-font-size: 14px; -fx-border-color: #D2B48C;" />
+
+                <VBox spacing="12" style="-fx-padding: 10;">
+                    <Label fx:id="productPrice" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #8B0000;" />
+                    <Label fx:id="productStock" style="-fx-font-size: 14px; -fx-text-fill: #2E8B57; -fx-font-weight: bold;" />
+                    <Label fx:id="productRating" style="-fx-font-size: 14px; -fx-text-fill: #FF8C00; -fx-font-weight: bold;" />
+                    <Label fx:id="productCategory" style="-fx-font-size: 14px; -fx-text-fill: #A52A2A; -fx-font-weight: bold;" />
+                </VBox>
+
+                <!-- Кнопки действий -->
+                <HBox spacing="20" alignment="CENTER">
+                    <Button fx:id="addToCartBtn" text="🛒 В корзину" onAction="#handleAddToCart"
+                            style="-fx-pref-width: 180px; -fx-pref-height: 50px; -fx-background-color: linear-gradient(to bottom, #8B0000, #A52A2A); -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-font-size: 16px; -fx-background-radius: 25; -fx-border-radius: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 2);" />
+
+                    <Button fx:id="addToFavoritesBtn" text="❤️ Избранное" onAction="#handleAddToFavorites"
+                            style="-fx-pref-width: 180px; -fx-pref-height: 50px; -fx-background-color: linear-gradient(to bottom, #DC143C, #B22222); -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-font-size: 16px; -fx-background-radius: 25; -fx-border-radius: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 2);" />
+                </HBox>
+            </VBox>
+        </HBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-padding: 15; -fx-background-color: #8B0000;">
+            <Button text="← Назад в главное меню" onAction="#handleBackToMain"
+                    style="-fx-background-color: #A52A2A; -fx-text-fill: #F5F5DC; -fx-font-weight: bold; -fx-background-radius: 20; -fx-padding: 12 25; -fx-font-size: 14px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 5, 0, 0, 1);" />
+        </HBox>
+    </bottom>
+</BorderPane>

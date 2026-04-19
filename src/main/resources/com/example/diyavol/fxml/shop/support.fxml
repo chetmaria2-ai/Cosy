@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.diyavol.controller.shop.SupportController"
+            style="-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #8B0000 0%, #2F4F4F 100%);">
+
+    <top>
+        <VBox spacing="8" style="-fx-background-color: #2F4F4F; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 3);">
+            <Label text="💬 Служба поддержки"
+                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #F5F5DC;"/>
+            <Label text="Мы готовы помочь вам 24/7"
+                   style="-fx-font-size: 14px; -fx-text-fill: #D2B48C;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-padding: 20;">
+            <VBox spacing="20" style="-fx-padding: 20;" maxWidth="700">
+
+                <!-- Форма обращения -->
+                <VBox spacing="15" style="-fx-background-color: rgba(245,245,220,0.95); -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);">
+                    <Label text="📝 Задать вопрос"
+                           style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #8B0000;"/>
+
+                    <Label text="Тема обращения:" style="-fx-font-size: 13px; -fx-font-weight: bold;"/>
+                    <ChoiceBox fx:id="topicChoiceBox" maxWidth="Infinity"
+                               style="-fx-background-radius: 8; -fx-padding: 5;"/>
+
+                    <Label text="Ваш email:" style="-fx-font-size: 13px; -fx-font-weight: bold;"/>
+                    <TextField fx:id="emailField" promptText="email@example.com"
+                               style="-fx-background-radius: 8; -fx-padding: 8; -fx-font-size: 13px;"/>
+
+                    <Label text="Опишите ваш вопрос:" style="-fx-font-size: 13px; -fx-font-weight: bold;"/>
+                    <TextArea fx:id="questionArea" prefRowCount="5" wrapText="true"
+                              style="-fx-background-radius: 8; -fx-padding: 8; -fx-font-size: 13px;"/>
+
+                    <HBox spacing="10">
+                        <Button fx:id="sendButton" text="📤 Отправить" onAction="#handleSendQuestion"
+                                style="-fx-background-color: #8B0000; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 10 20; -fx-cursor: hand;"/>
+                        <Button text="🗑️ Очистить" onAction="#handleClearForm"
+                                style="-fx-background-color: #666; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 10 20; -fx-cursor: hand;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Ответ поддержки -->
+                <VBox fx:id="responseContainer" spacing="10"
+                      style="-fx-background-color: rgba(245,245,220,0.95); -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2);">
+                    <Label text="📋 Ответ системы"
+                           style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2E8B57;"/>
+                    <TextArea fx:id="responseArea" prefRowCount="8" wrapText="true" editable="false"
+                              style="-fx-background-radius: 8; -fx-padding: 8; -fx-font-size: 13px; -fx-background-color: #f0f8e8;"/>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <HBox style="-fx-padding: 15; -fx-background-color: rgba(0,0,0,0.2);">
+            <Button fx:id="backButton" text="⬅️ Назад" onAction="#handleBackToMain"
+                    style="-fx-background-color: rgba(245,245,220,0.9); -fx-text-fill: #8B0000; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 10 20; -fx-cursor: hand;"/>
+        </HBox>
+    </bottom>
+</BorderPane>
