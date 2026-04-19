@@ -26,7 +26,6 @@ public class SupportController {
 
     @FXML
     public void initialize() {
-        // Заполняем выбор темы
         topicChoiceBox.getItems().addAll(
                 "Вопрос по заказу",
                 "Техническая поддержка",
@@ -38,10 +37,8 @@ public class SupportController {
         );
         topicChoiceBox.setValue("Вопрос по заказу");
 
-        // Скрываем область ответа до отправки
         responseContainer.setVisible(false);
 
-        // Заполняем поле email примером
         emailField.setText("ваш-email@example.com");
         questionArea.setPromptText("Опишите ваш вопрос подробно...");
     }
@@ -53,14 +50,11 @@ public class SupportController {
         String email = emailField.getText().trim();
 
         if (validateInput(question, topic, email)) {
-            // Показываем область ответа
             responseContainer.setVisible(true);
 
-            // Генерируем ответ
             String response = generateSupportResponse(topic, question);
             responseArea.setText(response);
 
-            // Показываем подтверждение
             showAlert("Успех", "✅ Ваш вопрос отправлен! Мы ответим вам на email в течение 24 часов.");
         }
     }
@@ -120,7 +114,6 @@ public class SupportController {
                 "📧 Ответ будет отправлен на указанный email\n\n" +
                 "Благодарим за обращение! ❤️";
 
-        // Добавляем специфические ответы в зависимости от темы
         switch (topic) {
             case "Вопрос по заказу":
                 baseResponse += "\n\n💡 Для ускорения решения вопроса укажите номер вашего заказа.";
